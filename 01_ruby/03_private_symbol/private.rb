@@ -11,3 +11,19 @@
 # 3.
 # publicなsetterメソッド `string_key=` を作成してください
 # `string_key=` は引数を一つとり、引数がStringのオブジェクトであればそのまま、そうでなければ `to_s` で文字列化して、 `key=` メソッドにその内容を渡します
+
+class Private
+  def string_key=(v)
+    self.key = v.is_a?(String) ? v : v.to_s
+  end
+
+  private
+  
+  def secrets
+    "secret string"
+  end
+
+  def key=(v)
+    @key = v
+  end
+end
