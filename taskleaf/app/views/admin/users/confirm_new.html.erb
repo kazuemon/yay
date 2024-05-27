@@ -1,0 +1,31 @@
+<h1>登録内容の確認</h1>
+
+<%= form_with model:[:admin, @user], local: true do |f| %>
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <th><%= User.human_attribute_name(:name) %></th>
+        <td><%= @user.name %></td>
+        <%= f.hidden_field :name %>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <td><%= @user.email %></td>
+        <%= f.hidden_field :email %>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:admin) %></th>
+        <td><%= @user.admin? ? 'あり' : 'なし' %></td>
+        <%= f.hidden_field :admin %>
+      </tr>
+      <tr>
+        <th><%= User.human_attribute_name(:password) %></th>
+        <td>***** (非表示)</td>
+        <%= f.hidden_field :password %>
+        <%= f.hidden_field :password_confirmation %>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit '修正する', name: 'back', class: 'btn btn-secondary mr-3' %>
+  <%= f.submit '登録する', class: 'btn btn-primary' %>
+<% end %>

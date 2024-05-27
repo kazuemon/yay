@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   namespace :admin do
-    resources :users
+    resources :users do
+      post :confirm, action: :confirm_new, on: :new
+    end
   end
 
   resources :tasks

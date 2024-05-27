@@ -10,6 +10,16 @@ class Task < ApplicationRecord
 
   scope :recent, -> { order(created_at: :desc) }
 
+  has_one_attached :image
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name", "created_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+
   private
 
   # def set_nameless_name

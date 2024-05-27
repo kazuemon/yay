@@ -75,3 +75,5 @@ gem "sassc-rails", "~> 2.1"
 gem "rails-i18n", "~> 7.0"
 
 gem "rails_autolink"
+
+gem "ransack"

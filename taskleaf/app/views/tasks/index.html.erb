@@ -1,4 +1,15 @@
 <h1>タスク一覧</h1>
+
+<%= search_form_for @q, class: "my-3" do |f|%>
+  <div class="form-group row mb-2">
+    <%= f.label :name_cont, '名称', class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <%= f.search_field :name_cont, class: 'form-control' %>
+    </div>
+  </div>
+  <%= f.submit class: "btn btn-primary mb-3"%>
+<% end %>
+
 <div class="mb-3">
   <%= link_to '新規登録', new_task_path, class: 'btn btn-primary'%>
 </div>
@@ -7,7 +18,7 @@
   <thead>
     <tr>
       <th><%= Task.human_attribute_name(:name) %></th>
-      <th><%= Task.human_attribute_name(:created_at) %></th>
+      <th><%= sort_link(@q, :created_at) %></th>
       <th></th>
     </tr>
   </thead>
